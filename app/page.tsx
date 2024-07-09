@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col justify-center px-24">
-      <h1 className="text-center">Disney Movie Builder</h1>
+      <h1>Disney Movie Builder</h1>
       <p className="text-center mb-12">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nesciunt
         sit, excepturi labore obcaecati ut. Eaque, at ipsum, accusamus dolor
