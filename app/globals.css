@@ -2,15 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  transition: all 0.1s ease-in-out;
+}
+
 h1 {
   font-size: 6rem;
   font-weight: bold;
 }
 
-p {
-  font-size: 1.25rem;
+h2 {
+  font-weight: bold;
 }
 
 .primary-link {
-  @apply bg-blue-700 text-white rounded-sm p-4 hover:bg-blue-500;
+  @apply bg-blue-700 text-white rounded-md p-4 hover:bg-blue-500;
 }
