@@ -1,5 +1,5 @@
 export type AirtableRecordType = {
-  recordId: string;
+  id: string;
   fields: Movie;
 };
 
@@ -15,4 +15,6 @@ export type Movie = {
   name: string;
   enemies: string;
   heroes: string;
+  liked: boolean;
+  recordId: string;
 };

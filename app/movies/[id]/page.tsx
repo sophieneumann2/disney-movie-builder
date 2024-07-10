@@ -1,15 +1,56 @@
+import Like from '@/components/like.client';
+import { getMovie } from '@/lib/airtable';
 import Link from 'next/link';
-import React from 'react';
 
-export default function MovieDetails(props: { params: { id: string } }) {
+export default async function MovieDetails(props: { params: { id: string } }) {
   const { id } = props.params;
+
+  const movie = await getMovie(id);
+
+  console.log('movie', movie);
+
   return (
     <div className="page-wrap">
-      <Link href={'/movies'}>Back to movies</Link>
-      <h1>Movie details: {id}</h1>
-      <Link href={`/movies/${id}/edit`} className="primary-link">
-        Edit
+      <Link className="secondary-link" href={'/movies'}>
+        ← Back to movies
       </Link>
+      <h1>{movie.name}</h1>
+      <div className="flex items-center justify-center">
+        <Like liked={!!movie.liked} id={movie._id ?? ''} />
+      </div>
+
+      <div className="h-24">
+        <Link href={`/movies/${id}/edit`} className="primary-link float-right">
+          Edit
+        </Link>
+      </div>
+
+      <div className="grid lg:grid-cols-2 xs:grid-cols-1 gap-8">
+        <div className="mb-8 card-base-styles">
+          <h2>Heroes:</h2>
+          {movie.heroes.split(', ').length ? (
+            <ul>
+              {movie.heroes.split(', ').map((hero: string, index: number) => (
+                <li key={`hero-${hero}-${index}`}>- {hero}</li>
+              ))}
+            </ul>
+          ) : (
+            '-'
+          )}
+        </div>
+        <div className="card-base-styles">
+          <h2>Enemies:</h2>
+          {movie.enemies?.split(', ').length ? (
+            <ul>
+              {movie.enemies.split(', ').map((enemy: string, index: number) => (
+                <li key={`enemy-${enemy}-${index}`}>- {enemy}</li>
+              ))}
+            </ul>
+          ) : (
+            '-'
+          )}
+        </div>
+      </div>
     </div>
   );
 }

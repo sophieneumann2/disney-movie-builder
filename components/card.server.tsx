@@ -6,14 +6,21 @@ interface ICardProps {
   href: string;
   cardTitle: string;
   children?: React.ReactNode;
+  className?: string;
 }
 
-export default function Card({ key, href, cardTitle, children }: ICardProps) {
+export default function Card({
+  key,
+  href,
+  cardTitle,
+  children,
+  className,
+}: ICardProps) {
   return (
     <Link
       key={key}
       href={href}
-      className="block bg-slate-300 hover:bg-slate-200 hover:scale-105 rounded-lg p-8"
+      className="card-base-styles hover:bg-slate-200 hover:scale-105"
     >
       <h2>{cardTitle}</h2>
       {children}
