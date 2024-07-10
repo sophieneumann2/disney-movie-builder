@@ -1,3 +1,4 @@
+import DeleteMovieButton from '@/components/delete-movie-button.client';
 import Like from '@/components/like.client';
 import { getMovie } from '@/lib/airtable';
 import Link from 'next/link';
@@ -12,17 +13,17 @@ export default async function MovieDetails(props: { params: { id: string } }) {
       <Link className="secondary-link" href={'/movies'}>
         ← Back to movies
       </Link>
+
       <h1>{movie.name}</h1>
       <div className="flex items-center justify-center">
-        <Like liked={!!movie.liked} id={movie._id ?? ''} />
+        <Like liked={!!movie.liked} id={movie._id} />
       </div>
-
-      <div className="h-24">
-        <Link href={`/movies/${id}/edit`} className="primary-link float-right">
+      <div className="h-24 flex justify-between items-center gap-4">
+        <DeleteMovieButton recordId={movie.recordId} />
+        <Link href={`/movies/${id}/edit`} className="primary-link ">
           Edit
         </Link>
       </div>
-
       <div className="grid lg:grid-cols-2 xs:grid-cols-1 gap-8">
         <div className="mb-8 card-base-styles">
           <h2>Heroes:</h2>

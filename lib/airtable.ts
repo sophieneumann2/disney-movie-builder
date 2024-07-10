@@ -78,3 +78,13 @@ export const changeLikeStatusMovie = async (id: string) => {
     console.error('error updating a store');
   }
 };
+
+export const deleteMovie = async (recordId: string) => {
+  table.destroy([recordId], function (err: any, deletedRecords: any) {
+    if (err) {
+      console.error(err);
+    }
+    console.log('Deleted', deletedRecords.length, 'records');
+  });
+  return;
+};
