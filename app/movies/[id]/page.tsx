@@ -27,9 +27,9 @@ export default async function MovieDetails(props: { params: { id: string } }) {
       <div className="grid lg:grid-cols-2 xs:grid-cols-1 gap-8">
         <div className="mb-8 card-base-styles">
           <h2>Heroes:</h2>
-          {movie.heroes.split(', ').length ? (
+          {movie.heroes.split(',').length ? (
             <ul>
-              {movie.heroes.split(', ').map((hero: string, index: number) => (
+              {movie.heroes.split(',').map((hero: string, index: number) => (
                 <li key={`hero-${hero}-${index}`}>- {hero}</li>
               ))}
             </ul>
@@ -39,9 +39,9 @@ export default async function MovieDetails(props: { params: { id: string } }) {
         </div>
         <div className="card-base-styles">
           <h2>Enemies:</h2>
-          {movie.enemies?.split(', ').length ? (
+          {movie.enemies?.split(',').length ? (
             <ul>
-              {movie.enemies.split(', ').map((enemy: string, index: number) => (
+              {movie.enemies.split(',').map((enemy: string, index: number) => (
                 <li key={`enemy-${enemy}-${index}`}>- {enemy}</li>
               ))}
             </ul>

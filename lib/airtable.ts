@@ -30,7 +30,7 @@ export const getMovie = async (id: string) => {
   return getMinifiedResponse(movies)[0];
 };
 
-export const updateMovie = async (data: AirtableRecordType[]) => {
+export const updateMovie = async (data: any[]) => {
   table.update(data, function (err: any, records: AirtableRecordType) {
     if (err) {
       console.error(err);

@@ -2,7 +2,7 @@
 
 import { createMovie } from '@/lib/airtable';
 import { NewMovie } from '@/types';
-import { revalidateTag } from 'next/cache';
+import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 export async function createMovieAction(
@@ -11,8 +11,8 @@ export async function createMovieAction(
 ) {
   const data = {
     name: formData.get('name')?.toString() ?? '',
-    heroes: formData.get('heroes')?.toString() ?? '',
-    enemies: formData.get('enemies')?.toString() ?? '',
+    heroes: formData.getAll('heroes').join() ?? '',
+    enemies: formData.getAll('enemies').join() ?? '',
     liked: false,
     _id: Math.random().toString(),
   };
@@ -22,6 +22,6 @@ export async function createMovieAction(
   } catch (error) {
     return prevState;
   }
-  revalidateTag('movies');
+  revalidatePath('/movies');
   redirect('/movies');
 }

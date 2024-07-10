@@ -24,10 +24,10 @@ export default async function Movies() {
               {' '}
               <div className="my-2">
                 <h3>Enemies:</h3>
-                {movie.enemies.split(', ').length ? (
+                {movie.enemies.split(',').length ? (
                   <ul>
                     {movie.enemies
-                      .split(', ')
+                      .split(',')
                       .map((enemy: string, index: number) => (
                         <li key={`enemy-${enemy}-${index}`}>- {enemy}</li>
                       ))}
@@ -38,10 +38,10 @@ export default async function Movies() {
               </div>
               <div className="my-2">
                 <h3>Heroes:</h3>
-                {movie.heroes.split(', ').length ? (
+                {movie.heroes.split(',').length ? (
                   <ul>
                     {movie.heroes
-                      .split(', ')
+                      .split(',')
                       .map((hero: string, index: number) => (
                         <li key={`hero-${hero}-${index}`}>- {hero}</li>
                       ))}
