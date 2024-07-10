@@ -1,6 +1,6 @@
 'use client';
 
-import { likeMovie } from '@/actions';
+import { likeMovieAction } from '@/actions/like-movie';
 import Image from 'next/image';
 import { useFormState } from 'react-dom';
 
@@ -14,7 +14,7 @@ export default function Like({ liked, id }: ILikeProps) {
     id,
     liked: !!liked,
   };
-  const [state, dispatch] = useFormState(likeMovie, initialState);
+  const [state, dispatch] = useFormState(likeMovieAction, initialState);
   return (
     <form
       className="flex flex-row items-center justify-start gap-4"

@@ -8,7 +8,7 @@ type State = {
   liked: boolean;
 };
 
-export async function likeMovie(prevState: State) {
+export async function likeMovieAction(prevState: State) {
   const { id } = prevState;
 
   const response = await changeLikeStatusMovie(id);

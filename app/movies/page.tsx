@@ -13,7 +13,7 @@ export default async function Movies() {
       <Link href={'/movies/new'} className="primary-link float-right">
         + Create new movie
       </Link>
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-8 mt-12">
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-8 mt-24">
         {movies.map((movie) => (
           <Card
             key={movie._id}

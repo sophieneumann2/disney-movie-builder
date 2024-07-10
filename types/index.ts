@@ -18,3 +18,11 @@ export type Movie = {
   liked: boolean;
   recordId: string;
 };
+
+export type NewMovie = {
+  name: string;
+  enemies: string;
+  heroes: string;
+  liked: boolean;
+  _id: string;
+};

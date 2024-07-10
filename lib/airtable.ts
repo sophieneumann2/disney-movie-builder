@@ -1,4 +1,4 @@
-import { AirtableRecordType } from '@/types';
+import { AirtableRecordType, NewMovie } from '@/types';
 
 const Airtable = require('airtable');
 const base = new Airtable({
@@ -36,8 +36,21 @@ export const updateMovie = async (data: AirtableRecordType[]) => {
       console.error(err);
       return;
     }
-    return records;
+    return getMinifiedResponse([records]);
   });
+};
+
+export const createMovie = async (data: NewMovie) => {
+  table.create(
+    [{ fields: { ...data } }],
+    function (err: any, records: AirtableRecordType) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      return getMinifiedResponse([records]);
+    },
+  );
 };
 
 export const changeLikeStatusMovie = async (id: string) => {

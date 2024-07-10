@@ -7,8 +7,6 @@ export default async function MovieDetails(props: { params: { id: string } }) {
 
   const movie = await getMovie(id);
 
-  console.log('movie', movie);
-
   return (
     <div className="page-wrap">
       <Link className="secondary-link" href={'/movies'}>
