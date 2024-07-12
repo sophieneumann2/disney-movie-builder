@@ -19,9 +19,9 @@ export async function createMovieAction(
 
   try {
     await createMovie(data);
+    revalidatePath('/movies');
+    redirect('/movies');
   } catch (error) {
     return prevState;
   }
-  revalidatePath('/movies');
-  redirect('/movies');
 }

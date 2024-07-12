@@ -31,26 +31,21 @@ export const getMovie = async (id: string) => {
 };
 
 export const updateMovie = async (data: any[]) => {
-  table.update(data, function (err: any, records: AirtableRecordType) {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    return getMinifiedResponse([records]);
-  });
+  try {
+    const updatedData = table.update(data);
+    return getMinifiedResponse([updatedData]);
+  } catch (error) {
+    console.error('Error updating data:', error);
+  }
 };
 
 export const createMovie = async (data: NewMovie) => {
-  table.create(
-    [{ fields: { ...data } }],
-    function (err: any, records: AirtableRecordType) {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      return getMinifiedResponse([records]);
-    },
-  );
+  try {
+    const response = table.create([{ fields: { ...data } }]);
+    return getMinifiedResponse([response]);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const changeLikeStatusMovie = async (id: string) => {
@@ -80,11 +75,12 @@ export const changeLikeStatusMovie = async (id: string) => {
 };
 
 export const deleteMovie = async (recordId: string) => {
-  table.destroy([recordId], function (err: any, deletedRecords: any) {
-    if (err) {
-      console.error(err);
-    }
-    console.log('Deleted', deletedRecords.length, 'records');
-  });
+  try {
+    const response = table.destroy([recordId]);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+
   return;
 };
